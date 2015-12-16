@@ -1,0 +1,18 @@
+<div id="o-wrapper" class="o-wrapper">
+</div>
+<div id="starter-kit-menu--slide-{{side}}" class="starter-kit-menu starter-kit-menu--slide-{{side}}">
+    <!-- <div class="bar bar-header bar-stable starter-kit-menu-header">
+    <h1 class="title">Menu List</h1>
+</div> -->
+   <div class="item item-avatar">
+    <img src="img/adam.jpg">
+    <h2>appXpressDev@gtnexus.com</h2>
+    <p>Logout</p>
+  </div>
+    <ion-list class="starter-kit-menu__items">
+        <ion-item class="starter-kit-menu__item item-icon-left" ng-repeat="item in menulist" ng-click="direct({state:item.goTo})">
+            <i class="icon {{item.icon}}"></i><a class="starter-kit-menu__link">{{item.name}}</a></ion-item>
+    </ion-list>
+</div>
+<div id="starter-kit-mask" class="starter-kit-mask"></div>
+<!-- /starter-kit-mask -->

@@ -1,0 +1,33 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+
+# folders
+
+node_modules
+platforms
+plugins
+hooks
+build
+
+# files
+*.bowerrc
+www/lib/ngCordova
+www/css/ionic.app.css
+www/css/ionic.app.min.css
+
+.DS_Store
+classes
+target
+bin
+gen
+.settings
+# Logs #
+######################
+*.log
+*.classpath
+*.project
+*.xccheckout
+*.xcuserstate
+*.xcbkptlist
+*.xcodeproj

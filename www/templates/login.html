@@ -1,0 +1,48 @@
+<ion-view>
+ <ion-content>
+
+	<div>
+		<div class="item">
+		<span class="item item-input"> <input type="text"
+			placeholder="Username" ng-model="userName"/>
+			</span>
+		</div>
+		<div class="item">
+			<label class="item item-input"> <input type="Password"
+				placeholder="Password" class="loginInput" ng-model="userPwd" >
+				</label>
+			</div>
+		<div class="item">
+			<label class="item item-input">
+				
+				<input type="text"
+				placeholder="Authorization code" class="loginInput" ng-model="authCode"/>
+			</label>
+		</div>
+		<div class="item" ng-show="env">
+			<label class="item item-input item-select">
+				<div class="input-label">
+							<p>Enviornment</p>
+				</div>
+				<select ng-model="envSelection">
+					<option ng-option="cqa.tradecard.com" selected>CQA</option>
+					<option ng-option="cqa.tradecard.com">supportQ</option>
+					<option ng-option="cqa.tradecard.com">production</option>
+				</select>
+			</label>
+		</div>
+	</div>
+	
+		<div style="float:right;margin-top:20px;" class="loginBox">
+			<button ng-click="signIn(userName,userPwd,authCode)"
+					class="button icon-right  button-medium button-light">
+				{{"LOGIN_SIGNIN" | translate}}</button>
+		</div>
+		<div style="float:right;margin-top:20px;" class="loginBox">
+			<button ng-click="showEnvSelection(true)"
+					class="button icon-right  button-medium button-light">
+				<i class="icon ion-gear-b placeholder-icon"></i></button>
+		</div>
+		
+	
+</ion-content> </ion-view>

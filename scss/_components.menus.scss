@@ -1,0 +1,200 @@
+/* -----------------------------------------------------------------------------
+
+  SLIDE AND PUSH MENUS COMPONENT
+  
+----------------------------------------------------------------------------- */
+
+$menu-break: 320px;
+$menu-width: 300px;
+$menu-height: 60px;
+
+/**
+ * Menu overview.
+ */
+
+.#{$namespace}menu {
+    position: fixed;
+    z-index: 200;
+    background-color: $color--theme;
+    transition: transform 0.3s;
+}
+
+.#{$namespace}menu__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.#{$namespace}menu-header {
+    position: relative;
+}
+
+
+/**
+ * Left and right menus
+ *
+ * Slide and push menus coming in from the left and right inherit a lot of
+ * common styles. We'll start each of them off by doing up the common styles
+ * for each version, followed by individual styles.
+ *
+ * The various versions are governed by modifier classes.
+ */
+
+
+/**
+ * Common modifiers for left/right menus.
+ */
+
+.#{$namespace}menu--slide-left,
+.#{$namespace}menu--slide-right,
+.#{$namespace}menu--push-left,
+.#{$namespace}menu--push-right {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    @media all and (min-width: $menu-break) {
+        width: $menu-width;
+    }
+}
+
+.#{$namespace}menu--slide-left .#{$namespace}menu__item,
+.#{$namespace}menu--slide-right .#{$namespace}menu__item,
+.#{$namespace}menu--push-left .#{$namespace}menu__item,
+.#{$namespace}menu--push-right .#{$namespace}menu__item {
+    display: block;
+    // text-align: center;
+    background-color: $color--theme;
+    border-top: solid 1px $color--theme-light;
+    border-bottom: solid 1px $color--theme-dark;
+    border-color: transparent;
+    background-color: transparent;
+    color: #AFAFAF !important;
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    &:first-child {
+        border-top: none;
+    }
+    &:last-child {
+        border-bottom: none;
+    }
+    .icon {
+        color: #444 !important;
+        font-size: $font-size--large;
+    }
+}
+
+.#{$namespace}menu--slide-left .#{$namespace}menu__link,
+.#{$namespace}menu--slide-right .#{$namespace}menu__link,
+.#{$namespace}menu--push-left .#{$namespace}menu__link,
+.#{$namespace}menu--push-right .#{$namespace}menu__link {
+    display: block;
+    // padding: 12px 24px;
+    color: #444;
+}
+
+.#{$namespace}menu--slide-left .#{$namespace}menu__close,
+.#{$namespace}menu--slide-right .#{$namespace}menu__close,
+.#{$namespace}menu--push-left .#{$namespace}menu__close,
+.#{$namespace}menu--push-right .#{$namespace}menu__close {
+    display: block;
+    // padding: 12px 24px;
+    width: 100%;
+}
+
+
+/**
+ * Slide/Push Menu Left.
+ */
+
+.#{$namespace}menu--slide-left,
+.#{$namespace}menu--push-left {
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    @media all and (min-width: $menu-break) {
+        transform: translateX(-$menu-width);
+    }
+}
+
+.#{$namespace}menu--slide-left.is-active,
+.#{$namespace}menu--push-left.is-active {
+    transform: translateX(0);
+}
+
+
+/**
+ * Slide/Push Menu Right.
+ */
+
+.#{$namespace}menu--slide-right,
+.#{$namespace}menu--push-right {
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    @media all and (min-width: $menu-break) {
+        transform: translateX($menu-width);
+    }
+}
+
+.#{$namespace}menu--slide-right.is-active,
+.#{$namespace}menu--push-right.is-active {
+    transform: translateX(0);
+}
+
+
+/**
+ * Wrapper states.
+ *
+ * Various wrapper states occur depending on if a menu is pushing into view, in
+ * which case, the wrapper has to be pushed by the respective distance.
+ */
+
+.o-wrapper.has-push-left {
+    transform: translateX(100%);
+    @media all and (min-width: $menu-break) {
+        transform: translateX($menu-width);
+    }
+}
+
+.o-wrapper.has-push-right {
+    transform: translateX(-100%);
+    @media all and (min-width: $menu-break) {
+        transform: translateX(-$menu-width);
+    }
+}
+
+
+/**
+ * Body states.
+ *
+ * When a menu is active, we want to hide the overflows on the body to prevent
+ * awkward document scrolling.
+ */
+
+body.has-active-menu {
+    overflow: hidden;
+}
+
+
+/**
+ * Close button resets.
+ */
+
+.#{$namespace}menu__close {
+    color: #fff;
+    // background-color: $color--theme-dark;
+    font-size: $font-size--small;
+    border: none;
+    box-shadow: none;
+    border-radius: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.#{$namespace}menu__close:focus {
+    outline: none;
+}
